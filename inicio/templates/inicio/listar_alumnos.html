@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title_head %}
+<title>Alumnos</title>
+{% endblock title_head %}
+
+{% block h1_header %}
+Alumnos
+{% endblock h1_header %}
+
+{% block contenido %}
+<form action="" method="get">
+    {{formulario}}
+    <button>Buscar</button>
+</form>
+
+{% for alumno in alumnos %}
+<li>Nombre: {{alumno.nombre}} - Apellido: {{alumno.apellido}}</li>
+{% endfor %}
+{% endblock contenido %}

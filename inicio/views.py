@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from inicio.forms import CrearAlumnoFormulario
+from inicio.forms import CrearAlumnoFormulario, BuscarAlumnoFormulario 
 from inicio.models import Alumno
 
 # Create your views here.
@@ -21,3 +21,13 @@ def crear_alumno(request):
                     
     formulario = CrearAlumnoFormulario()
     return render(request, 'inicio/crear_alumno.html', {'formulario' : formulario, 'mensaje':mensaje})
+
+def listar_alumnos(request):
+    formulario = BuscarAlumnoFormulario(request.GET)
+    if formulario.is_valid():
+        busqueda = formulario.cleaned_data["dni"]
+        listado = Alumno.objects.filter(dni=busqueda)
+    else:
+        print("DNI Not Found")
+    
+    return render(request, 'inicio/listar_alumnos.html',{'formulario':formulario, "alumnos":listado})

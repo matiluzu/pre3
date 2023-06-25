@@ -5,3 +5,6 @@ class CrearAlumnoFormulario(forms.Form):
     apellido = forms.CharField(max_length=20)
     edad = forms.IntegerField()
     dni = forms.IntegerField()
+    
+class BuscarAlumnoFormulario(forms.Form):
+    dni = forms.IntegerField()
