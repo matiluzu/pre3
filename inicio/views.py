@@ -24,6 +24,7 @@ def crear_alumno(request):
 
 def listar_alumnos(request):
     formulario = BuscarAlumnoFormulario(request.GET)
+    listado = []
     if formulario.is_valid():
         busqueda = formulario.cleaned_data["dni"]
         listado = Alumno.objects.filter(dni=busqueda)
